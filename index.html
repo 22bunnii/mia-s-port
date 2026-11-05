@@ -19,10 +19,11 @@
     --paper: #f8fafc;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 30px;
 }
 
 body {
@@ -32,6 +33,8 @@ body {
     overflow-x: hidden;
     font-family: 'DM Mono', monospace;
 }
+
+/* BACKGROUND */
 
 .background {
     position: fixed;
@@ -71,6 +74,8 @@ body {
     opacity: .55;
 }
 
+/* HERO PAGE — ORIGINAL MAIN DESIGN */
+
 .hero {
     position: relative;
     min-height: 100vh;
@@ -79,8 +84,6 @@ body {
     z-index: 1;
     isolation: isolate;
 }
-
-/* TOP TEXT */
 
 .top-info {
     position: absolute;
@@ -104,12 +107,12 @@ body {
     color: #71899d;
 }
 
-/* HEADING — MOVED UP */
+/* TITLE */
 
 .heading {
     position: absolute;
     z-index: 5;
-    top: 15%;
+    top: 12%;
     left: 9%;
     animation: headingIn 1.2s ease both;
 }
@@ -123,20 +126,17 @@ body {
     color: #344655;
 }
 
-.blue {
-    color: var(--blue);
-}
+.blue { color: var(--blue); }
 
 .subtitle {
     margin-top: 18px;
-    font-family: 'DM Mono', monospace;
     font-size: 9px;
     letter-spacing: 2px;
     color: #8199ad;
     text-transform: uppercase;
 }
 
-/* POLAROID AREA */
+/* POLAROIDS */
 
 .polaroid-area {
     position: absolute;
@@ -149,7 +149,7 @@ body {
     position: absolute;
     padding: 12px 12px 35px;
     background: #fff;
-    box-shadow: 0 12px 35px rgba(61, 85, 105, .13);
+    box-shadow: 0 12px 35px rgba(61,85,105,.13);
     pointer-events: auto;
     transition: transform .45s cubic-bezier(.2,.8,.2,1),
                 box-shadow .45s ease;
@@ -158,7 +158,7 @@ body {
 
 .polaroid:hover {
     transform: scale(1.07) rotate(0deg) !important;
-    box-shadow: 0 22px 45px rgba(61, 85, 105, .22);
+    box-shadow: 0 22px 45px rgba(61,85,105,.22);
 }
 
 .polaroid-inner {
@@ -166,15 +166,14 @@ body {
     height: 100%;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(145deg, #e6eef4, #bdcedc);
+    background: linear-gradient(145deg,#e6eef4,#bdcedc);
 }
 
 .polaroid-inner::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,.28), transparent 55%);
-    pointer-events: none;
+    background: linear-gradient(135deg,rgba(255,255,255,.28),transparent 55%);
 }
 
 .polaroid-main {
@@ -213,7 +212,7 @@ body {
     letter-spacing: 1.5px;
 }
 
-/* BINARY NUMBERS */
+/* BINARY GLITCH */
 
 .binary-layer {
     position: absolute;
@@ -225,7 +224,6 @@ body {
 
 .binary {
     position: absolute;
-    font-family: 'DM Mono', monospace;
     font-size: 10px;
     line-height: 2;
     letter-spacing: 3px;
@@ -241,53 +239,14 @@ body {
     text-shadow: 0 0 8px rgba(120,159,190,.3);
 }
 
-.binary.one {
-    top: 18%;
-    left: 4%;
-    width: 180px;
-}
-
-.binary.two {
-    top: 70%;
-    left: 7%;
-    width: 200px;
-}
-
-.binary.three {
-    top: 12%;
-    left: 48%;
-    width: 150px;
-}
-
-.binary.four {
-    top: 78%;
-    right: 8%;
-    width: 190px;
-}
-
-.binary.five {
-    top: 45%;
-    right: 4%;
-    width: 180px;
-}
-
-.binary.six {
-    bottom: 5%;
-    left: 42%;
-    width: 180px;
-}
-
-.binary.seven {
-    top: 42%;
-    left: 4%;
-    width: 150px;
-}
-
-.binary.eight {
-    top: 85%;
-    right: 35%;
-    width: 160px;
-}
+.binary.one { top: 18%; left: 4%; width: 180px; }
+.binary.two { top: 70%; left: 7%; width: 200px; }
+.binary.three { top: 12%; left: 48%; width: 150px; }
+.binary.four { top: 78%; right: 8%; width: 190px; }
+.binary.five { top: 45%; right: 4%; width: 180px; }
+.binary.six { bottom: 5%; left: 42%; width: 180px; }
+.binary.seven { top: 42%; left: 4%; width: 150px; }
+.binary.eight { top: 85%; right: 35%; width: 160px; }
 
 .binary::before {
     content: "";
@@ -298,16 +257,13 @@ body {
     animation: binarySweep 4s linear infinite;
 }
 
-.binary.active::before {
-    animation-duration: .6s;
-}
+.binary.active::before { animation-duration: .6s; }
 
 @keyframes binarySweep {
-    0% { transform: translateX(-110%); }
-    100% { transform: translateX(110%); }
+    to { transform: translateX(110%); }
 }
 
-/* DECORATIVE SHAPES */
+/* DECORATIONS */
 
 .symbol {
     position: absolute;
@@ -317,9 +273,7 @@ body {
     pointer-events: none;
 }
 
-.cross {
-    font-size: 20px;
-}
+.cross { font-size: 20px; }
 
 .ring {
     width: 13px;
@@ -405,14 +359,10 @@ body {
     opacity: .45;
     background: repeating-linear-gradient(
         90deg,
-        #71899d 0px,
-        #71899d 1px,
-        transparent 1px,
-        transparent 3px,
-        #71899d 3px,
-        #71899d 5px,
-        transparent 5px,
-        transparent 7px
+        #71899d 0px,#71899d 1px,
+        transparent 1px,transparent 3px,
+        #71899d 3px,#71899d 5px,
+        transparent 5px,transparent 7px
     );
 }
 
@@ -449,6 +399,7 @@ body {
     font-size: 8px;
     color: #8298aa;
     letter-spacing: 2px;
+    text-decoration: none;
 }
 
 /* SCREEN GLITCH */
@@ -486,8 +437,6 @@ body {
     100% { top: 110%; opacity: 0; }
 }
 
-/* ENTRANCE ANIMATIONS */
-
 @keyframes headingIn {
     from {
         opacity: 0;
@@ -502,108 +451,674 @@ body {
 }
 
 @keyframes photoIn {
-    from {
-        opacity: 0;
-        scale: .85;
-    }
-    to {
-        opacity: 1;
-        scale: 1;
-    }
+    from { opacity: 0; scale: .85; }
+    to { opacity: 1; scale: 1; }
 }
 
 @keyframes spin {
     to { rotate: 360deg; }
 }
 
-/* MOBILE */
+/* SAME BACKGROUND THROUGH THE WHOLE SITE */
 
-@media (max-width: 700px) {
-    .heading {
-        top: 15%;
-        left: 8%;
+body { background: #f8fafc; }
+.background { position: fixed; }
+
+/* MUSIC SECTION — GLASS BLUE ARCHIVE */
+
+.song-page {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    isolation: isolate;
+    padding: 70px 7% 65px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+}
+
+.song-page::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgba(210,225,239,.10);
+    pointer-events: none;
+}
+
+.song-layout {
+    position: relative;
+    width: 100%;
+    max-width: 1180px;
+    min-height: 570px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 43% 57%;
+    align-items: center;
+}
+
+/* BIGGER GLASS CD — DEEP BLUE CENTRE */
+
+.vinyl-stage {
+    position: relative;
+    z-index: 2;
+    width: min(36vw, 410px);
+    aspect-ratio: 1;
+    justify-self: center;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+    animation: photoIn 1.1s .15s ease both;
+}
+
+.vinyl-record {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 35% 27%,
+            rgba(255,255,255,.38) 0%,
+            transparent 24%),
+        radial-gradient(circle at center,
+            #557fa2 0%,
+            #6f98b8 13%,
+            #8fb2cd 23%,
+            rgba(191,216,234,.68) 34%,
+            rgba(225,239,248,.36) 47%,
+            rgba(255,255,255,.62) 64%,
+            rgba(195,220,237,.30) 78%,
+            rgba(255,255,255,.78) 100%),
+        repeating-radial-gradient(circle at center,
+            transparent 0 13px,
+            rgba(255,255,255,.19) 14px,
+            transparent 15px 23px);
+
+    border: 1px solid rgba(255,255,255,.88);
+
+    box-shadow:
+        0 22px 55px rgba(77,111,139,.13),
+        inset 0 0 0 1px rgba(120,159,190,.25),
+        inset 0 0 35px rgba(255,255,255,.48);
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    animation: vinylRotate 20s linear infinite;
+}
+
+.vinyl-record::before {
+    content: '';
+    position: absolute;
+    inset: 5%;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.66);
+
+    box-shadow:
+        inset 0 0 0 1px rgba(120,159,190,.10),
+        0 0 0 1px rgba(120,159,190,.10);
+
+    background:
+        repeating-radial-gradient(circle at center,
+            transparent 0 8px,
+            rgba(255,255,255,.14) 9px,
+            transparent 10px 15px);
+}
+
+.vinyl-record::after {
+    content: '';
+    position: absolute;
+    inset: 43%;
+    border-radius: 50%;
+
+    background: radial-gradient(circle at 35% 30%,
+        rgba(255,255,255,.95),
+        rgba(197,221,238,.75) 65%,
+        rgba(135,174,204,.50));
+
+    border: 1px solid rgba(255,255,255,.9);
+
+    box-shadow:
+        0 0 0 5px rgba(255,255,255,.25),
+        0 0 0 6px rgba(120,159,190,.16),
+        inset 0 1px 8px rgba(255,255,255,.8);
+}
+
+.vinyl-label {
+    display: none;
+}
+
+.vinyl-shine {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+
+    background:
+        linear-gradient(125deg,
+            transparent 15%,
+            rgba(255,255,255,.62) 29%,
+            rgba(255,255,255,.08) 39%,
+            transparent 49%,
+            transparent 67%,
+            rgba(255,255,255,.38) 75%,
+            transparent 83%);
+
+    pointer-events: none;
+}
+
+/* TRACK LIST */
+
+.playlist-column {
+    position: relative;
+    z-index: 4;
+    width: 100%;
+    max-width: 550px;
+    justify-self: end;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-right: 1%;
+    animation: headingIn 1s .2s ease both;
+}
+
+.song-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 58px minmax(0,1fr);
+    align-items: center;
+    gap: 14px;
+    min-height: 80px;
+    padding: 10px 16px;
+
+    border: 1px solid rgba(120,159,190,.25);
+    border-radius: 14px;
+
+    background: rgba(255,255,255,.52);
+    color: var(--ink);
+
+    box-shadow: 0 8px 20px rgba(83,116,143,.055);
+
+    cursor: pointer;
+    transform-origin: center;
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        background .3s ease,
+        border-color .3s ease;
+
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.song-card:hover {
+    transform: translateX(5px);
+    background: rgba(255,255,255,.76);
+    border-color: rgba(120,159,190,.48);
+    box-shadow: 0 12px 26px rgba(83,116,143,.09);
+}
+
+.song-card.selected {
+    border-color: rgba(120,159,190,.58);
+    background: rgba(225,237,245,.58);
+
+    box-shadow:
+        0 0 0 1px rgba(196,217,233,.38),
+        0 10px 24px rgba(83,116,143,.07);
+}
+
+.cover-art {
+    position: relative;
+    width: 58px;
+    height: 58px;
+    overflow: hidden;
+
+    border: 1px solid rgba(255,255,255,.9);
+    border-radius: 8px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(255,255,255,.88),
+            rgba(198,220,237,.48));
+
+    box-shadow:
+        inset 0 0 0 1px rgba(120,159,190,.14),
+        0 3px 10px rgba(83,116,143,.06);
+}
+
+.cover-art::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+        rgba(255,255,255,.42),
+        transparent 55%);
+}
+
+.cover-art::after { content: none; }
+
+.song-details {
+    min-width: 0;
+    align-self: center;
+}
+
+.song-title {
+    display: block;
+    color: #526d83;
+    font: 500 14px/1.2 'DM Mono', monospace;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.song-artist {
+    display: block;
+    margin-top: 7px;
+    color: #91a8bb;
+    font: 400 8px 'DM Mono', monospace;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.song-index {
+    position: absolute;
+    top: 9px;
+    right: 12px;
+    color: #9bb1c3;
+    font-size: 7px;
+    letter-spacing: 1px;
+}
+
+/* PLAYER CONTROLS */
+
+.song-controls {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 7px 2px 0;
+    margin-top: 3px;
+}
+
+.player-btn {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+
+    border: 1px solid rgba(120,159,190,.30);
+    border-radius: 8px;
+
+    background: rgba(255,255,255,.55);
+    color: #789fbe;
+    font-size: 13px;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 13px rgba(83,116,143,.05);
+
+    transition:
+        transform .25s ease,
+        background .25s ease;
+}
+
+.player-btn:hover {
+    transform: translateY(-2px);
+    background: rgba(225,237,245,.75);
+}
+
+.song-now-playing {
+    margin-left: auto;
+    color: #91a8bb;
+    font-size: 7px;
+    letter-spacing: 1.3px;
+    text-align: right;
+    text-transform: uppercase;
+}
+
+.song-now-playing strong {
+    display: block;
+    margin-top: 4px;
+    color: #6689a6;
+    font-size: 9px;
+    font-weight: 500;
+}
+
+/* FLOATING SYMBOLS */
+
+.music-symbol {
+    position: absolute;
+    z-index: 1;
+
+    color: #89a9c2;
+    opacity: .55;
+
+    pointer-events: none;
+    animation: musicFloat 7s ease-in-out infinite;
+}
+
+.music-symbol.cross-a {
+    top: 13%;
+    left: 8%;
+    font-size: 20px;
+}
+
+.music-symbol.ring-a {
+    top: 73%;
+    left: 12%;
+
+    width: 13px;
+    height: 13px;
+
+    border: 1px solid #8eabc2;
+    border-radius: 50%;
+
+    animation-delay: -2s;
+}
+
+.music-symbol.diamond-a {
+    top: 20%;
+    left: 48%;
+
+    width: 8px;
+    height: 8px;
+
+    border: 1px solid #8eabc2;
+    transform: rotate(45deg);
+
+    animation-delay: -3s;
+}
+
+.music-symbol.dot-a {
+    bottom: 17%;
+    left: 47%;
+
+    width: 4px;
+    height: 4px;
+
+    background: #789fbe;
+    border-radius: 50%;
+
+    animation-delay: -4s;
+}
+
+.music-symbol.cross-b {
+    bottom: 15%;
+    right: 12%;
+    font-size: 17px;
+
+    animation-delay: -1.5s;
+}
+
+.music-symbol.ring-b {
+    top: 17%;
+    right: 13%;
+
+    width: 11px;
+    height: 11px;
+
+    border: 1px solid #8eabc2;
+    border-radius: 50%;
+
+    animation-delay: -3.5s;
+}
+
+.music-symbol.line-a {
+    bottom: 28%;
+    right: 8%;
+
+    width: 35px;
+    height: 1px;
+
+    background: #91aec4;
+
+    animation-delay: -2.5s;
+}
+
+/* EXTRA FLOATING X SYMBOLS */
+
+.music-symbol.extra-x {
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.x-one {
+    top: 38%;
+    left: 5%;
+    animation-delay: -1s;
+}
+
+.x-two {
+    top: 82%;
+    left: 39%;
+    animation-delay: -3s;
+}
+
+.x-three {
+    top: 34%;
+    right: 7%;
+    animation-delay: -4.5s;
+}
+
+.x-four {
+    bottom: 9%;
+    right: 34%;
+    animation-delay: -2s;
+}
+
+@keyframes musicFloat {
+    0%, 100% {
+        translate: 0 0;
+        opacity: .38;
     }
 
-    .heading h1 {
-        font-size: clamp(38px, 11vw, 65px);
-        letter-spacing: -2px;
-    }
-
-    .polaroid-main {
-        width: 53%;
-        height: 39%;
-        top: 43%;
-        left: 40%;
-    }
-
-    .polaroid-small {
-        width: 29%;
-        height: 25%;
-        top: 59%;
-        left: 10%;
-    }
-
-    .polaroid-third {
-        width: 25%;
-        height: 22%;
-        top: 29%;
-        right: 3%;
-    }
-
-    .top-info {
-        top: 22px;
-        left: 6%;
-        font-size: 8px;
-    }
-
-    .edition {
-        top: 22px;
-        right: 6%;
-        font-size: 8px;
-    }
-
-    .binary {
-        font-size: 8px;
-        letter-spacing: 2px;
-    }
-
-    .binary.three {
-        top: 9%;
-        left: 45%;
-    }
-
-    .bottom-left {
-        bottom: 4%;
-        font-size: 7px;
-    }
-
-    .bottom-center {
-        bottom: 4%;
-        font-size: 7px;
-    }
-
-    .barcode {
-        display: none;
-    }
-
-    .clip-main {
-        top: 41%;
-        left: 82%;
-    }
-
-    .clip-small {
-        top: 58%;
-        left: 36%;
+    50% {
+        translate: 0 -10px;
+        opacity: .7;
     }
 }
+
+/* MUSIC BINARY TEXT */
+
+.music-binary {
+    position: absolute;
+    z-index: 1;
+    color: #789fbe;
+    opacity: .27;
+
+    font: 8px/1.9 'DM Mono', monospace;
+    letter-spacing: 2px;
+
+    white-space: nowrap;
+    pointer-events: none;
+
+    animation: binaryDrift 8s ease-in-out infinite;
+}
+
+.binary-a {
+    top: 12%;
+    left: 23%;
+}
+
+.binary-b {
+    top: 78%;
+    left: 5%;
+    animation-delay: -2s;
+}
+
+.binary-c {
+    top: 17%;
+    right: 5%;
+    animation-delay: -4s;
+}
+
+.binary-d {
+    bottom: 10%;
+    right: 13%;
+    animation-delay: -5.5s;
+}
+
+@keyframes binaryDrift {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: .18;
+    }
+
+    50% {
+        transform: translateY(-8px);
+        opacity: .38;
+    }
+}
+
+/* EMPTY FUTURE SECTIONS */
+
+.blank-page {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    background: transparent;
+}
+
+@keyframes vinylRotate {
+    to { transform: rotate(360deg); }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 800px) {
+
+    .song-page {
+        min-height: 100vh;
+        height: auto;
+        padding: 65px 5% 55px;
+    }
+
+    .song-layout {
+        min-height: 650px;
+        grid-template-columns: 40% 60%;
+        padding: 20px 0;
+    }
+
+    .vinyl-stage {
+        width: min(42vw, 330px);
+    }
+
+    .playlist-column {
+        gap: 13px;
+        padding-right: 0;
+    }
+
+    .song-card {
+        min-height: 74px;
+        grid-template-columns: 50px minmax(0,1fr);
+        gap: 10px;
+        padding: 9px 11px;
+    }
+
+    .cover-art {
+        width: 50px;
+        height: 50px;
+    }
+
+    .song-title { font-size: 12px; }
+
+    .music-binary {
+        font-size: 7px;
+        letter-spacing: 1px;
+    }
+}
+
+@media (max-width: 520px) {
+
+    .song-page {
+        min-height: 100svh;
+        padding: 55px 6% 45px;
+    }
+
+    .song-layout {
+        min-height: 650px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 35px;
+        padding: 15px 0;
+    }
+
+    .vinyl-stage {
+        width: min(62vw, 270px);
+        flex: 0 0 auto;
+    }
+
+    .playlist-column {
+        width: 100%;
+        max-width: 390px;
+        gap: 11px;
+        padding: 0;
+    }
+
+    .song-card {
+        grid-template-columns: 46px minmax(0,1fr);
+        min-height: 66px;
+        gap: 10px;
+        padding: 8px 11px;
+    }
+
+    .cover-art {
+        width: 46px;
+        height: 46px;
+    }
+
+    .song-title { font-size: 11px; }
+    .song-artist { font-size: 7px; }
+
+    .song-controls { gap: 6px; }
+
+    .player-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+
+    .song-now-playing { font-size: 6px; }
+    .song-now-playing strong { font-size: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .vinyl-record,
+    .music-symbol {
+        animation: none !important;
+    }
+}
+
+
+/* MIA ASCII BINARY — MAIN PAGE ONLY */
+
+.mia-code {
+    font-size: 9px;
+    letter-spacing: 2px;
+    opacity: .30;
+}
+
+.mia-code.mia-one { top: 28%; left: 17%; width: 190px; }
+.mia-code.mia-two { top: 58%; left: 25%; width: 190px; }
+.mia-code.mia-three { top: 8%; right: 19%; width: 190px; }
+.mia-code.mia-four { bottom: 13%; right: 27%; width: 190px; }
+.mia-code.mia-five { top: 82%; left: 3%; width: 190px; }
+.mia-code.mia-six { top: 48%; right: 2%; width: 190px; }
+
 </style>
 </head>
 
-<body>
+<body id="top">
 
 <div class="background"></div>
 <div class="scanlines"></div>
 <div class="glitch-sweep"></div>
+
+<!-- SECTION 01: MAIN PAGE -->
 
 <main class="hero">
 
@@ -613,9 +1128,7 @@ body {
         Personal archive
     </div>
 
-    <div class="edition">
-        22 / MIA EDITION.
-    </div>
+    <div class="edition">22 / MIA EDITION.</div>
 
     <section class="heading">
         <h1>
@@ -628,7 +1141,6 @@ body {
         </p>
     </section>
 
-    <!-- INDEPENDENT BINARY TEXT -->
     <div class="binary-layer">
         <div class="binary one"></div>
         <div class="binary two"></div>
@@ -638,9 +1150,15 @@ body {
         <div class="binary six"></div>
         <div class="binary seven"></div>
         <div class="binary eight"></div>
+
+        <div class="binary mia-code mia-one">01001101 01001001 01000001</div>
+        <div class="binary mia-code mia-two">01001101 01001001 01000001</div>
+        <div class="binary mia-code mia-three">01001101 01001001 01000001</div>
+        <div class="binary mia-code mia-four">01001101 01001001 01000001</div>
+        <div class="binary mia-code mia-five">01001101 01001001 01000001</div>
+        <div class="binary mia-code mia-six">01001101 01001001 01000001</div>
     </div>
 
-    <!-- DECORATIVE SYMBOLS -->
     <div class="symbol cross symbol-1">+</div>
     <div class="symbol ring symbol-2"></div>
     <div class="symbol diamond symbol-3"></div>
@@ -650,7 +1168,6 @@ body {
     <div class="symbol ring symbol-7"></div>
     <div class="symbol dot symbol-8"></div>
 
-    <!-- POLAROIDS -->
     <div class="polaroid-area">
 
         <div class="polaroid polaroid-main">
@@ -670,11 +1187,9 @@ body {
 
     </div>
 
-    <!-- PAPER CLIPS -->
     <div class="clip clip-main"></div>
     <div class="clip clip-small"></div>
 
-    <!-- BARCODE -->
     <div class="barcode"></div>
     <div class="barcode-text">MIA — 00001</div>
 
@@ -683,64 +1198,1002 @@ body {
         Somewhere on the internet.
     </div>
 
-    <div class="bottom-center">
+    <a class="bottom-center" href="#works">
         SCROLL TO EXPLORE ↓
-    </div>
+    </a>
 
 </main>
 
-<script>
-/* INDEPENDENT BINARY GLITCH TYPING */
 
-const binaryElements = document.querySelectorAll('.binary');
 
-function generateBinary() {
-    const length = Math.floor(Math.random() * 18) + 15;
-    let result = '';
+<!-- ================================
+     MUSIC PAGE — CSS
+================================ -->
 
-    for (let i = 0; i < length; i++) {
-        result += Math.random() > 0.5 ? '1' : '0';
+<style>
+.song-page {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    isolation: isolate;
+    padding: 70px 7% 65px;
+    display: flex;
+    align-items: center;
+    background: transparent;
+}
 
-        if (Math.random() > 0.76) {
-            result += ' ';
-        }
+.song-page::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgba(210,225,239,.10);
+    pointer-events: none;
+}
+
+.song-layout {
+    position: relative;
+    width: 100%;
+    max-width: 1180px;
+    min-height: 570px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 43% 57%;
+    align-items: center;
+}
+
+/* CD — TRANSPARENT GLASS BLUE */
+
+.vinyl-stage {
+    position: relative;
+    z-index: 2;
+    width: min(36vw, 410px);
+    aspect-ratio: 1;
+    justify-self: center;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+    transform: translateY(-34px);
+    animation: musicEntrance 1.1s .15s ease both;
+}
+
+.vinyl-record {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 35% 27%,
+            rgba(255,255,255,.38) 0%,
+            transparent 24%),
+
+        radial-gradient(circle at center,
+            #477da5 0%,
+            #5b91b8 12%,
+            rgba(112,163,198,.88) 22%,
+            rgba(157,194,219,.48) 34%,
+            rgba(205,228,242,.19) 48%,
+            rgba(232,244,251,.10) 64%,
+            rgba(196,222,239,.16) 80%,
+            rgba(255,255,255,.30) 100%),
+
+        repeating-radial-gradient(circle at center,
+            transparent 0 13px,
+            rgba(255,255,255,.19) 14px,
+            transparent 15px 23px);
+
+    border: 1px solid rgba(255,255,255,.88);
+
+    box-shadow:
+        0 22px 55px rgba(77,111,139,.13),
+        inset 0 0 0 1px rgba(120,159,190,.25),
+        inset 0 0 35px rgba(255,255,255,.48);
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    animation: vinylRotate 20s linear infinite;
+}
+
+.vinyl-record::before {
+    content: '';
+    position: absolute;
+    inset: 5%;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.66);
+
+    box-shadow:
+        inset 0 0 0 1px rgba(120,159,190,.10),
+        0 0 0 1px rgba(120,159,190,.10);
+
+    background:
+        repeating-radial-gradient(circle at center,
+            transparent 0 8px,
+            rgba(255,255,255,.14) 9px,
+            transparent 10px 15px);
+}
+
+.vinyl-record::after {
+    content: '';
+    position: absolute;
+    inset: 43%;
+    border-radius: 50%;
+
+    background: radial-gradient(circle at 35% 30%,
+        rgba(255,255,255,.95),
+        rgba(197,221,238,.75) 65%,
+        rgba(135,174,204,.50));
+
+    border: 1px solid rgba(255,255,255,.9);
+
+    box-shadow:
+        0 0 0 5px rgba(255,255,255,.25),
+        0 0 0 6px rgba(120,159,190,.16),
+        inset 0 1px 8px rgba(255,255,255,.8);
+}
+
+.vinyl-shine {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+
+    background:
+        linear-gradient(125deg,
+            transparent 15%,
+            rgba(255,255,255,.62) 29%,
+            rgba(255,255,255,.08) 39%,
+            transparent 49%,
+            transparent 67%,
+            rgba(255,255,255,.38) 75%,
+            transparent 83%);
+
+    pointer-events: none;
+}
+
+/* SONG CARDS */
+
+.playlist-column {
+    position: relative;
+    z-index: 4;
+    width: 100%;
+    max-width: 550px;
+    justify-self: end;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    padding-right: 1%;
+    animation: musicEntrance 1s .2s ease both;
+}
+
+.song-card {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 58px minmax(0,1fr);
+    align-items: center;
+    gap: 14px;
+
+    min-height: 80px;
+    padding: 10px 16px;
+
+    border: 1px solid rgba(120,159,190,.25);
+    border-radius: 14px;
+
+    background: rgba(255,255,255,.52);
+    color: #344655;
+
+    box-shadow: 0 8px 20px rgba(83,116,143,.055);
+
+    cursor: pointer;
+    transform-origin: center;
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        background .3s ease,
+        border-color .3s ease;
+
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.song-card:hover {
+    transform: translateX(5px);
+    background: rgba(255,255,255,.76);
+    border-color: rgba(120,159,190,.48);
+
+    box-shadow: 0 12px 26px rgba(83,116,143,.09);
+}
+
+.song-card.selected {
+    border-color: rgba(120,159,190,.58);
+    background: rgba(225,237,245,.58);
+
+    box-shadow:
+        0 0 0 1px rgba(196,217,233,.38),
+        0 10px 24px rgba(83,116,143,.07);
+}
+
+/* COVER ART */
+
+.cover-art {
+    position: relative;
+    width: 58px;
+    height: 58px;
+
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.9);
+    border-radius: 2px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(255,255,255,.88),
+            rgba(198,220,237,.48));
+
+    box-shadow:
+        inset 0 0 0 1px rgba(120,159,190,.14),
+        0 3px 10px rgba(83,116,143,.06);
+}
+
+.cover-art::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(135deg,
+            rgba(255,255,255,.42),
+            transparent 55%);
+}
+
+/* SONG DETAILS */
+
+.song-details {
+    min-width: 0;
+    align-self: center;
+}
+
+.song-title {
+    display: block;
+    color: #526d83;
+
+    font: 500 14px/1.2 'DM Mono', monospace;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.song-artist {
+    display: block;
+    margin-top: 7px;
+
+    color: #91a8bb;
+    font: 400 8px 'DM Mono', monospace;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.song-index {
+    position: absolute;
+    top: 9px;
+    right: 12px;
+
+    color: #9bb1c3;
+    font-size: 7px;
+    letter-spacing: 1px;
+}
+
+/* PLAYER CONTROLS */
+
+.song-controls {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 7px 2px 0;
+    margin-top: 3px;
+}
+
+.player-btn {
+    width: 36px;
+    height: 36px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid rgba(120,159,190,.30);
+    border-radius: 2px;
+
+    background: rgba(255,255,255,.55);
+    color: #789fbe;
+
+    font-size: 13px;
+    cursor: pointer;
+
+    box-shadow: 0 5px 13px rgba(83,116,143,.05);
+
+    transition:
+        transform .25s ease,
+        background .25s ease;
+}
+
+.player-btn:hover {
+    transform: translateY(-2px);
+    background: rgba(225,237,245,.75);
+}
+
+.song-now-playing {
+    margin-left: auto;
+
+    color: #91a8bb;
+    font-size: 7px;
+    letter-spacing: 1.3px;
+    text-align: right;
+    text-transform: uppercase;
+}
+
+.song-now-playing strong {
+    display: block;
+    margin-top: 4px;
+
+    color: #6689a6;
+    font-size: 9px;
+    font-weight: 500;
+}
+
+/* FLOATING SYMBOLS */
+
+.music-symbol {
+    position: absolute;
+    z-index: 1;
+
+    color: #89a9c2;
+    opacity: .55;
+
+    pointer-events: none;
+    animation: musicFloat 7s ease-in-out infinite;
+}
+
+.music-symbol.cross-a {
+    top: 13%;
+    left: 8%;
+    font-size: 20px;
+}
+
+.music-symbol.ring-a {
+    top: 73%;
+    left: 12%;
+
+    width: 13px;
+    height: 13px;
+
+    border: 1px solid #8eabc2;
+    border-radius: 50%;
+
+    animation-delay: -2s;
+}
+
+.music-symbol.diamond-a {
+    top: 20%;
+    left: 48%;
+
+    width: 8px;
+    height: 8px;
+
+    border: 1px solid #8eabc2;
+    transform: rotate(45deg);
+
+    animation-delay: -3s;
+}
+
+.music-symbol.dot-a {
+    bottom: 17%;
+    left: 47%;
+
+    width: 4px;
+    height: 4px;
+
+    background: #789fbe;
+    border-radius: 50%;
+
+    animation-delay: -4s;
+}
+
+.music-symbol.cross-b {
+    bottom: 15%;
+    right: 12%;
+    font-size: 17px;
+
+    animation-delay: -1.5s;
+}
+
+.music-symbol.ring-b {
+    top: 17%;
+    right: 13%;
+
+    width: 11px;
+    height: 11px;
+
+    border: 1px solid #8eabc2;
+    border-radius: 50%;
+
+    animation-delay: -3.5s;
+}
+
+.music-symbol.line-a {
+    bottom: 28%;
+    right: 8%;
+
+    width: 35px;
+    height: 1px;
+
+    background: #91aec4;
+
+    animation-delay: -2.5s;
+}
+
+/* EXTRA FLOATING X SYMBOLS */
+
+.music-symbol.extra-x {
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.x-one {
+    top: 38%;
+    left: 5%;
+    animation-delay: -1s;
+}
+
+.x-two {
+    top: 82%;
+    left: 39%;
+    animation-delay: -3s;
+}
+
+.x-three {
+    top: 34%;
+    right: 7%;
+    animation-delay: -4.5s;
+}
+
+.x-four {
+    bottom: 9%;
+    right: 34%;
+    animation-delay: -2s;
+}
+
+@keyframes musicFloat {
+    0%, 100% {
+        translate: 0 0;
+        opacity: .38;
     }
 
-    return result;
+    50% {
+        translate: 0 -10px;
+        opacity: .7;
+    }
 }
 
-function updateBinary(element) {
-    element.textContent = generateBinary();
+/* MUSIC BINARY TEXT */
+
+.music-binary {
+    position: absolute;
+    z-index: 1;
+    color: #789fbe;
+    opacity: .27;
+
+    font: 8px/1.9 'DM Mono', monospace;
+    letter-spacing: 2px;
+
+    white-space: nowrap;
+    pointer-events: none;
+
+    animation: binaryDrift 8s ease-in-out infinite;
 }
 
-binaryElements.forEach((element, index) => {
-    updateBinary(element);
+.binary-a {
+    top: 12%;
+    left: 23%;
+}
 
-    const delay = 90 + Math.random() * 150;
+.binary-b {
+    top: 78%;
+    left: 5%;
+    animation-delay: -2s;
+}
+
+.binary-c {
+    top: 17%;
+    right: 5%;
+    animation-delay: -4s;
+}
+
+.binary-d {
+    bottom: 10%;
+    right: 13%;
+    animation-delay: -5.5s;
+}
+
+@keyframes binaryDrift {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: .18;
+    }
+
+    50% {
+        transform: translateY(-8px);
+        opacity: .38;
+    }
+}
+
+/* EMPTY FUTURE SECTIONS */
+
+.blank-page {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    background: transparent;
+}
+
+@keyframes vinylRotate {
+    to { transform: rotate(360deg); }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 800px) {
+
+    .song-page {
+        min-height: 100vh;
+        height: auto;
+        padding: 65px 5% 55px;
+    }
+
+    .song-layout {
+        min-height: 650px;
+        grid-template-columns: 40% 60%;
+        padding: 20px 0;
+    }
+
+    .vinyl-stage {
+        width: min(42vw, 330px);
+    }
+
+    .playlist-column {
+        gap: 13px;
+        padding-right: 0;
+    }
+
+    .song-card {
+        min-height: 74px;
+        grid-template-columns: 50px minmax(0,1fr);
+        gap: 10px;
+        padding: 9px 11px;
+    }
+
+    .cover-art {
+        width: 50px;
+        height: 50px;
+    }
+
+    .song-title { font-size: 12px; }
+
+    .music-binary {
+        font-size: 7px;
+        letter-spacing: 1px;
+    }
+}
+
+@media (max-width: 520px) {
+
+    .song-page {
+        min-height: 100svh;
+        padding: 55px 6% 45px;
+    }
+
+    .song-layout {
+        min-height: 650px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 35px;
+        padding: 15px 0;
+    }
+
+    .vinyl-stage {
+        width: min(62vw, 270px);
+        flex: 0 0 auto;
+    }
+
+    .playlist-column {
+        width: 100%;
+        max-width: 390px;
+        gap: 11px;
+        padding: 0;
+    }
+
+    .song-card {
+        grid-template-columns: 46px minmax(0,1fr);
+        min-height: 66px;
+        gap: 10px;
+        padding: 8px 11px;
+    }
+
+    .cover-art {
+        width: 46px;
+        height: 46px;
+    }
+
+    .song-title { font-size: 11px; }
+    .song-artist { font-size: 7px; }
+
+    .song-controls { gap: 6px; }
+
+    .player-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+
+    .song-now-playing { font-size: 6px; }
+    .song-now-playing strong { font-size: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .vinyl-record,
+    .music-symbol {
+        animation: none !important;
+    }
+}
+</style>
+
+
+<!-- ================================
+     MUSIC PAGE — HTML
+================================ -->
+
+<section class="song-page" id="song">
+
+    <div class="song-layout">
+
+        <!-- FLOATING SYMBOLS -->
+
+        <span class="music-symbol cross-a">+</span>
+        <span class="music-symbol ring-a"></span>
+        <span class="music-symbol diamond-a"></span>
+        <span class="music-symbol dot-a"></span>
+        <span class="music-symbol cross-b">×</span>
+        <span class="music-symbol ring-b"></span>
+        <span class="music-symbol line-a"></span>
+
+        <span class="music-symbol extra-x x-one">×</span>
+        <span class="music-symbol extra-x x-two">×</span>
+        <span class="music-symbol extra-x x-three">×</span>
+        <span class="music-symbol extra-x x-four">×</span>
+
+
+        <!-- RANDOM BINARY -->
+
+        <div class="music-binary binary-a"></div>
+        <div class="music-binary binary-b"></div>
+        <div class="music-binary binary-c"></div>
+        <div class="music-binary binary-d"></div>
+        <div class="music-binary binary-e"></div>
+        <div class="music-binary binary-f"></div>
+        <div class="music-binary binary-g"></div>
+        <div class="music-binary binary-h"></div>
+        <div class="music-binary binary-i"></div>
+        <div class="music-binary binary-j"></div>
+        <div class="music-binary binary-k"></div>
+        <div class="music-binary binary-l"></div>
+
+
+        <!-- GLASS BLUE CD -->
+
+        <div class="vinyl-stage">
+            <div class="vinyl-record" id="musicVinyl">
+                <div class="vinyl-shine"></div>
+            </div>
+        </div>
+
+
+        <!-- SONG LIST -->
+
+        <div class="playlist-column">
+
+            <article class="song-card selected"
+                data-title="OST 01">
+
+                <span class="song-index">01 / 03</span>
+
+                <div class="cover-art"></div>
+
+                <div class="song-details">
+                    <span class="song-title">OST 01</span>
+                    <span class="song-artist">ORIGINAL SOUNDTRACK</span>
+                </div>
+
+            </article>
+
+
+            <article class="song-card"
+                data-title="OST 02">
+
+                <span class="song-index">02 / 03</span>
+
+                <div class="cover-art"></div>
+
+                <div class="song-details">
+                    <span class="song-title">OST 02</span>
+                    <span class="song-artist">ORIGINAL SOUNDTRACK</span>
+                </div>
+
+            </article>
+
+
+            <article class="song-card"
+                data-title="OST 03">
+
+                <span class="song-index">03 / 03</span>
+
+                <div class="cover-art"></div>
+
+                <div class="song-details">
+                    <span class="song-title">OST 03</span>
+                    <span class="song-artist">ORIGINAL SOUNDTRACK</span>
+                </div>
+
+            </article>
+
+
+            <!-- CONTROLS -->
+
+            <div class="song-controls">
+
+                <button class="player-btn"
+                    id="musicPrevious"
+                    type="button">|◀</button>
+
+                <button class="player-btn"
+                    id="musicPause"
+                    type="button">Ⅱ</button>
+
+                <button class="player-btn"
+                    id="musicPlay"
+                    type="button">▶</button>
+
+                <button class="player-btn"
+                    id="musicNext"
+                    type="button">▶|</button>
+
+                <div class="song-now-playing">
+                    NOW PLAYING
+                    <strong id="musicNowPlaying">OST 01</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     MUSIC PAGE — JAVASCRIPT
+================================ -->
+
+<script>
+
+/* MUSIC PAGE BINARY GLITCH */
+
+(function () {
+
+    const musicBinaryElements =
+        document.querySelectorAll('.music-binary');
+
+    function generateMusicBinary() {
+
+        const length =
+            Math.floor(Math.random() * 18) + 15;
+
+        let result = '';
+
+        for (let i = 0; i < length; i++) {
+
+            result += Math.random() > 0.5 ? '1' : '0';
+
+            if (Math.random() > 0.76) {
+                result += ' ';
+            }
+
+        }
+
+        return result;
+    }
+
+
+    function updateMusicBinary(element) {
+        element.textContent = generateMusicBinary();
+    }
+
+
+    musicBinaryElements.forEach((element, index) => {
+
+        updateMusicBinary(element);
+
+        const delay = 90 + Math.random() * 150;
+
+        setInterval(() => {
+            updateMusicBinary(element);
+        }, delay);
+
+
+        setTimeout(() => {
+
+            element.classList.add('active');
+
+            setTimeout(() => {
+                element.classList.remove('active');
+            }, 180);
+
+        }, index * 250);
+
+    });
+
+
+    /* RANDOM GLITCH FLASH */
 
     setInterval(() => {
-        updateBinary(element);
-    }, delay);
 
-    setTimeout(() => {
+        if (!musicBinaryElements.length) return;
+
+        const randomElement =
+            musicBinaryElements[
+                Math.floor(Math.random() * musicBinaryElements.length)
+            ];
+
+        randomElement.classList.add('active');
+
+        setTimeout(() => {
+            randomElement.classList.remove('active');
+        }, 180 + Math.random() * 250);
+
+    }, 650);
+
+
+})();
+
+
+/* MUSIC PLAYER INTERACTION */
+
+(function () {
+
+    const musicCards =
+        [...document.querySelectorAll('.song-card')];
+
+    const musicVinyl =
+        document.getElementById('musicVinyl');
+
+    const musicNowPlaying =
+        document.getElementById('musicNowPlaying');
+
+    let currentMusicTrack = 0;
+
+
+    function selectMusicTrack(index) {
+
+        currentMusicTrack =
+            (index + musicCards.length) % musicCards.length;
+
+        musicCards.forEach((card, i) => {
+
+            card.classList.toggle(
+                'selected',
+                i === currentMusicTrack
+            );
+
+        });
+
+        musicNowPlaying.textContent =
+            musicCards[currentMusicTrack].dataset.title;
+
+        musicVinyl.style.animationPlayState = 'running';
+
+    }
+
+
+    musicCards.forEach((card, index) => {
+
+        card.addEventListener('click', () => {
+            selectMusicTrack(index);
+        });
+
+    });
+
+
+    document.getElementById('musicPlay')
+        .addEventListener('click', () => {
+
+            musicVinyl.style.animationPlayState = 'running';
+
+        });
+
+
+    document.getElementById('musicPause')
+        .addEventListener('click', () => {
+
+            musicVinyl.style.animationPlayState = 'paused';
+
+        });
+
+
+    document.getElementById('musicPrevious')
+        .addEventListener('click', () => {
+
+            selectMusicTrack(currentMusicTrack - 1);
+
+        });
+
+
+    document.getElementById('musicNext')
+        .addEventListener('click', () => {
+
+            selectMusicTrack(currentMusicTrack + 1);
+
+        });
+
+
+})();
+
+
+
+/* MAIN PAGE — RANDOM MIA ASCII BINARY GLITCH */
+
+(function () {
+
+    const miaBinaryElements =
+        document.querySelectorAll('.hero .mia-code');
+
+    function flashMiaBinary(element) {
         element.classList.add('active');
 
         setTimeout(() => {
             element.classList.remove('active');
-        }, 180);
-    }, index * 250);
-});
+        }, 180 + Math.random() * 250);
+    }
 
-setInterval(() => {
-    const randomElement =
-        binaryElements[Math.floor(Math.random() * binaryElements.length)];
+    miaBinaryElements.forEach((element, index) => {
+        setTimeout(() => flashMiaBinary(element), index * 220);
 
-    randomElement.classList.add('active');
+        setInterval(() => {
+            if (Math.random() > 0.45) {
+                flashMiaBinary(element);
+            }
+        }, 700 + Math.random() * 1100);
+    });
 
-    setTimeout(() => {
-        randomElement.classList.remove('active');
-    }, 180 + Math.random() * 250);
-}, 650);
+    setInterval(() => {
+        if (!miaBinaryElements.length) return;
+
+        const randomElement =
+            miaBinaryElements[
+                Math.floor(Math.random() * miaBinaryElements.length)
+            ];
+
+        flashMiaBinary(randomElement);
+    }, 550);
+
+})();
+
 </script>
 
 </body>

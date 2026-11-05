@@ -1,0 +1,747 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mia — Personal Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --blue: #789fbe;
+    --blue-light: #c4d9e9;
+    --blue-pale: #e1edf5;
+    --ink: #344655;
+    --paper: #f8fafc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--paper);
+    color: var(--ink);
+    overflow-x: hidden;
+    font-family: 'DM Mono', monospace;
+}
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background:
+        linear-gradient(rgba(120,159,190,.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(120,159,190,.10) 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+.background::before {
+    content: "";
+    position: absolute;
+    width: 550px;
+    height: 550px;
+    top: -180px;
+    right: -120px;
+    background: #dceaf4;
+    filter: blur(100px);
+    border-radius: 50%;
+    opacity: .75;
+}
+
+.background::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    bottom: -200px;
+    left: -120px;
+    background: #cbddeb;
+    filter: blur(110px);
+    border-radius: 50%;
+    opacity: .55;
+}
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    z-index: 1;
+    isolation: isolate;
+}
+
+/* TOP TEXT */
+
+.top-info {
+    position: absolute;
+    top: 38px;
+    left: 5%;
+    z-index: 20;
+    font-size: 9px;
+    line-height: 1.9;
+    letter-spacing: 1.5px;
+    color: #71899d;
+    text-transform: uppercase;
+}
+
+.edition {
+    position: absolute;
+    top: 38px;
+    right: 5%;
+    z-index: 20;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #71899d;
+}
+
+/* HEADING — MOVED UP */
+
+.heading {
+    position: absolute;
+    z-index: 5;
+    top: 15%;
+    left: 9%;
+    animation: headingIn 1.2s ease both;
+}
+
+.heading h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(42px, 7vw, 90px);
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -4px;
+    color: #344655;
+}
+
+.blue {
+    color: var(--blue);
+}
+
+.subtitle {
+    margin-top: 18px;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #8199ad;
+    text-transform: uppercase;
+}
+
+/* POLAROID AREA */
+
+.polaroid-area {
+    position: absolute;
+    inset: 0;
+    z-index: 8;
+    pointer-events: none;
+}
+
+.polaroid {
+    position: absolute;
+    padding: 12px 12px 35px;
+    background: #fff;
+    box-shadow: 0 12px 35px rgba(61, 85, 105, .13);
+    pointer-events: auto;
+    transition: transform .45s cubic-bezier(.2,.8,.2,1),
+                box-shadow .45s ease;
+    cursor: pointer;
+}
+
+.polaroid:hover {
+    transform: scale(1.07) rotate(0deg) !important;
+    box-shadow: 0 22px 45px rgba(61, 85, 105, .22);
+}
+
+.polaroid-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(145deg, #e6eef4, #bdcedc);
+}
+
+.polaroid-inner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,.28), transparent 55%);
+    pointer-events: none;
+}
+
+.polaroid-main {
+    width: 31%;
+    height: 48%;
+    top: 29%;
+    left: 59%;
+    transform: rotate(-9deg);
+    animation: photoIn 1.3s .3s ease both;
+}
+
+.polaroid-small {
+    width: 17%;
+    height: 30%;
+    top: 55%;
+    left: 43%;
+    transform: rotate(13deg);
+    animation: photoIn 1.3s .6s ease both;
+}
+
+.polaroid-third {
+    width: 17%;
+    height: 27%;
+    top: 19%;
+    right: 3%;
+    transform: rotate(8deg);
+    animation: photoIn 1.3s .8s ease both;
+}
+
+.photo-label {
+    position: absolute;
+    bottom: 10px;
+    left: 13px;
+    font-size: 8px;
+    color: #7e91a1;
+    letter-spacing: 1.5px;
+}
+
+/* BINARY NUMBERS */
+
+.binary-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.binary {
+    position: absolute;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    line-height: 2;
+    letter-spacing: 3px;
+    color: #789fbe;
+    opacity: .35;
+    white-space: nowrap;
+    transition: opacity .2s ease;
+}
+
+.binary.active {
+    opacity: .85;
+    color: #668eae;
+    text-shadow: 0 0 8px rgba(120,159,190,.3);
+}
+
+.binary.one {
+    top: 18%;
+    left: 4%;
+    width: 180px;
+}
+
+.binary.two {
+    top: 70%;
+    left: 7%;
+    width: 200px;
+}
+
+.binary.three {
+    top: 12%;
+    left: 48%;
+    width: 150px;
+}
+
+.binary.four {
+    top: 78%;
+    right: 8%;
+    width: 190px;
+}
+
+.binary.five {
+    top: 45%;
+    right: 4%;
+    width: 180px;
+}
+
+.binary.six {
+    bottom: 5%;
+    left: 42%;
+    width: 180px;
+}
+
+.binary.seven {
+    top: 42%;
+    left: 4%;
+    width: 150px;
+}
+
+.binary.eight {
+    top: 85%;
+    right: 35%;
+    width: 160px;
+}
+
+.binary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(248,250,252,.55);
+    transform: translateX(-110%);
+    animation: binarySweep 4s linear infinite;
+}
+
+.binary.active::before {
+    animation-duration: .6s;
+}
+
+@keyframes binarySweep {
+    0% { transform: translateX(-110%); }
+    100% { transform: translateX(110%); }
+}
+
+/* DECORATIVE SHAPES */
+
+.symbol {
+    position: absolute;
+    z-index: 3;
+    color: #89a9c2;
+    opacity: .65;
+    pointer-events: none;
+}
+
+.cross {
+    font-size: 20px;
+}
+
+.ring {
+    width: 13px;
+    height: 13px;
+    border: 1px solid #8eabc2;
+    border-radius: 50%;
+}
+
+.diamond {
+    width: 8px;
+    height: 8px;
+    border: 1px solid #8eabc2;
+    transform: rotate(45deg);
+}
+
+.dot {
+    width: 4px;
+    height: 4px;
+    background: #789fbe;
+    border-radius: 50%;
+}
+
+.line {
+    width: 40px;
+    height: 1px;
+    background: #91aec4;
+}
+
+.symbol-1 { top: 18%; left: 43%; animation: spin 9s linear infinite; }
+.symbol-2 { top: 62%; left: 51%; animation: spin 12s linear infinite reverse; }
+.symbol-3 { top: 78%; left: 30%; }
+.symbol-4 { top: 35%; right: 8%; }
+.symbol-5 { bottom: 13%; right: 20%; }
+.symbol-6 { top: 9%; left: 28%; }
+.symbol-7 { top: 55%; right: 35%; }
+.symbol-8 { bottom: 20%; left: 12%; }
+
+/* PAPER CLIPS */
+
+.clip {
+    position: absolute;
+    width: 15px;
+    height: 42px;
+    border: 1.5px solid #88a8c1;
+    border-radius: 10px;
+    z-index: 12;
+    opacity: .7;
+    pointer-events: none;
+}
+
+.clip::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 3px;
+    width: 6px;
+    height: 28px;
+    border: 1px solid #88a8c1;
+    border-radius: 8px;
+}
+
+.clip-main {
+    top: 26%;
+    left: 83%;
+    transform: rotate(18deg);
+}
+
+.clip-small {
+    top: 54%;
+    left: 58%;
+    transform: rotate(-20deg);
+}
+
+/* BARCODE */
+
+.barcode {
+    position: absolute;
+    bottom: 7%;
+    right: 5%;
+    width: 65px;
+    height: 27px;
+    z-index: 10;
+    opacity: .45;
+    background: repeating-linear-gradient(
+        90deg,
+        #71899d 0px,
+        #71899d 1px,
+        transparent 1px,
+        transparent 3px,
+        #71899d 3px,
+        #71899d 5px,
+        transparent 5px,
+        transparent 7px
+    );
+}
+
+.barcode-text {
+    position: absolute;
+    bottom: 4%;
+    right: 5%;
+    z-index: 10;
+    font-size: 7px;
+    color: #71899d;
+    letter-spacing: 2px;
+}
+
+/* BOTTOM TEXT */
+
+.bottom-left {
+    position: absolute;
+    bottom: 6%;
+    left: 5%;
+    z-index: 15;
+    font-size: 8px;
+    line-height: 2;
+    color: #8298aa;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.bottom-center {
+    position: absolute;
+    bottom: 6%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    font-size: 8px;
+    color: #8298aa;
+    letter-spacing: 2px;
+}
+
+/* SCREEN GLITCH */
+
+.scanlines {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    pointer-events: none;
+    opacity: .12;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 3px,
+        rgba(70,100,125,.08) 4px
+    );
+}
+
+.glitch-sweep {
+    position: fixed;
+    top: -10%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    z-index: 31;
+    pointer-events: none;
+    background: rgba(120,159,190,.18);
+    animation: screenSweep 9s linear infinite;
+}
+
+@keyframes screenSweep {
+    0% { top: -10%; opacity: 0; }
+    10% { opacity: .5; }
+    90% { opacity: .5; }
+    100% { top: 110%; opacity: 0; }
+}
+
+/* ENTRANCE ANIMATIONS */
+
+@keyframes headingIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes photoIn {
+    from {
+        opacity: 0;
+        scale: .85;
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+@keyframes spin {
+    to { rotate: 360deg; }
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+    .heading {
+        top: 15%;
+        left: 8%;
+    }
+
+    .heading h1 {
+        font-size: clamp(38px, 11vw, 65px);
+        letter-spacing: -2px;
+    }
+
+    .polaroid-main {
+        width: 53%;
+        height: 39%;
+        top: 43%;
+        left: 40%;
+    }
+
+    .polaroid-small {
+        width: 29%;
+        height: 25%;
+        top: 59%;
+        left: 10%;
+    }
+
+    .polaroid-third {
+        width: 25%;
+        height: 22%;
+        top: 29%;
+        right: 3%;
+    }
+
+    .top-info {
+        top: 22px;
+        left: 6%;
+        font-size: 8px;
+    }
+
+    .edition {
+        top: 22px;
+        right: 6%;
+        font-size: 8px;
+    }
+
+    .binary {
+        font-size: 8px;
+        letter-spacing: 2px;
+    }
+
+    .binary.three {
+        top: 9%;
+        left: 45%;
+    }
+
+    .bottom-left {
+        bottom: 4%;
+        font-size: 7px;
+    }
+
+    .bottom-center {
+        bottom: 4%;
+        font-size: 7px;
+    }
+
+    .barcode {
+        display: none;
+    }
+
+    .clip-main {
+        top: 41%;
+        left: 82%;
+    }
+
+    .clip-small {
+        top: 58%;
+        left: 36%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+<div class="scanlines"></div>
+<div class="glitch-sweep"></div>
+
+<main class="hero">
+
+    <div class="top-info">
+        Experimental web<br>
+        Not yet finished.<br>
+        Personal archive
+    </div>
+
+    <div class="edition">
+        22 / MIA EDITION.
+    </div>
+
+    <section class="heading">
+        <h1>
+            ミア<span class="blue">の</span><br>
+            <span class="blue">ポー</span>トフォリオ
+        </h1>
+
+        <p class="subtitle">
+            A little archive of everything that is me.
+        </p>
+    </section>
+
+    <!-- INDEPENDENT BINARY TEXT -->
+    <div class="binary-layer">
+        <div class="binary one"></div>
+        <div class="binary two"></div>
+        <div class="binary three"></div>
+        <div class="binary four"></div>
+        <div class="binary five"></div>
+        <div class="binary six"></div>
+        <div class="binary seven"></div>
+        <div class="binary eight"></div>
+    </div>
+
+    <!-- DECORATIVE SYMBOLS -->
+    <div class="symbol cross symbol-1">+</div>
+    <div class="symbol ring symbol-2"></div>
+    <div class="symbol diamond symbol-3"></div>
+    <div class="symbol dot symbol-4"></div>
+    <div class="symbol line symbol-5"></div>
+    <div class="symbol cross symbol-6">×</div>
+    <div class="symbol ring symbol-7"></div>
+    <div class="symbol dot symbol-8"></div>
+
+    <!-- POLAROIDS -->
+    <div class="polaroid-area">
+
+        <div class="polaroid polaroid-main">
+            <div class="polaroid-inner"></div>
+            <div class="photo-label">FIG. 01 — ARCHIVE</div>
+        </div>
+
+        <div class="polaroid polaroid-small">
+            <div class="polaroid-inner"></div>
+            <div class="photo-label">MEMORY / 02</div>
+        </div>
+
+        <div class="polaroid polaroid-third">
+            <div class="polaroid-inner"></div>
+            <div class="photo-label">NO. 03</div>
+        </div>
+
+    </div>
+
+    <!-- PAPER CLIPS -->
+    <div class="clip clip-main"></div>
+    <div class="clip clip-small"></div>
+
+    <!-- BARCODE -->
+    <div class="barcode"></div>
+    <div class="barcode-text">MIA — 00001</div>
+
+    <div class="bottom-left">
+        Designed & collected<br>
+        Somewhere on the internet.
+    </div>
+
+    <div class="bottom-center">
+        SCROLL TO EXPLORE ↓
+    </div>
+
+</main>
+
+<script>
+/* INDEPENDENT BINARY GLITCH TYPING */
+
+const binaryElements = document.querySelectorAll('.binary');
+
+function generateBinary() {
+    const length = Math.floor(Math.random() * 18) + 15;
+    let result = '';
+
+    for (let i = 0; i < length; i++) {
+        result += Math.random() > 0.5 ? '1' : '0';
+
+        if (Math.random() > 0.76) {
+            result += ' ';
+        }
+    }
+
+    return result;
+}
+
+function updateBinary(element) {
+    element.textContent = generateBinary();
+}
+
+binaryElements.forEach((element, index) => {
+    updateBinary(element);
+
+    const delay = 90 + Math.random() * 150;
+
+    setInterval(() => {
+        updateBinary(element);
+    }, delay);
+
+    setTimeout(() => {
+        element.classList.add('active');
+
+        setTimeout(() => {
+            element.classList.remove('active');
+        }, 180);
+    }, index * 250);
+});
+
+setInterval(() => {
+    const randomElement =
+        binaryElements[Math.floor(Math.random() * binaryElements.length)];
+
+    randomElement.classList.add('active');
+
+    setTimeout(() => {
+        randomElement.classList.remove('active');
+    }, 180 + Math.random() * 250);
+}, 650);
+</script>
+
+</body>
+</html>

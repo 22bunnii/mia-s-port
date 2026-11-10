@@ -691,167 +691,353 @@
 
 
 /* ============================================================
-   PAGE 04 — LINKS
+   PAGE 04 — EXPERIMENTAL LINK DIRECTORY
    ============================================================ */
 
 .links {
   position: relative;
-  isolation: isolate;
+  min-height: 100vh;
+  padding: 70px 7%;
   overflow: hidden;
-  min-height: 75vh;
-  padding: 90px 7% 100px;
+  display: flex;
+  align-items: center;
 }
 
-/* Keep content above decorations */
-.links .head,
-.links .linkgrid {
+/* MAIN LAYOUT */
+
+.links-layout {
+  width: 100%;
+  max-width: 1100px;
+  min-height: 570px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
   position: relative;
+  border: 1px solid rgba(80, 120, 180, 0.2);
+}
+
+/* LEFT DIRECTORY */
+
+.links-directory {
+  position: relative;
+  padding: 35px 38px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgba(255,255,255,0.2);
   z-index: 2;
 }
 
-/* Two slim columns */
-.links .linkgroups {
+.links-top,
+.links-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: rgba(60, 95, 145, 0.65);
+}
+
+.directory-group {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px;
-  max-width: 850px;
-  margin: 55px auto 0;
+  grid-template-columns: 38px 1fr;
+  gap: 16px;
+  align-items: start;
+  margin: 25px 0;
 }
 
-.links .linkgroup {
-  padding: 22px 24px;
-  border: 1px solid rgba(160, 195, 235, 0.18);
-  border-radius: 12px;
-  background: rgba(120, 160, 210, 0.035);
-  backdrop-filter: blur(5px);
-  transition: border-color .3s ease,
-              background .3s ease,
-              transform .3s ease;
+.directory-icon {
+  width: 32px;
+  height: 27px;
+  border: 1px solid rgba(70, 115, 175, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4779b8;
+  font-size: 16px;
+  background: linear-gradient(
+    135deg,
+    rgba(180,210,245,.65),
+    rgba(255,255,255,.7)
+  );
+  box-shadow: inset 0 0 8px rgba(90,140,210,.2);
 }
 
-.links .linkgroup:hover {
-  border-color: rgba(170, 205, 245, 0.38);
-  background: rgba(120, 160, 210, 0.07);
-  transform: translateY(-3px);
+.directory-title {
+  font-family: monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: #5278a8;
+  margin: 5px 0 17px;
 }
 
-.links .linkgroup-head {
+.directory-links {
   display: flex;
   flex-direction: column;
   gap: 9px;
 }
 
-.links .group-index {
-  font-size: 9px;
-  letter-spacing: 2px;
-  color: rgba(170, 200, 235, 0.55);
-}
-
-.links .linkgroup h3 {
-  margin: 0;
-  font-size: clamp(17px, 2vw, 22px);
-  font-weight: 400;
-  letter-spacing: .3px;
-  color: #dceaff;
-}
-
-.links .linkgroup-desc {
-  font-size: 11px;
-  line-height: 1.7;
-  color: rgba(190, 210, 240, .58);
-  margin: 10px 0 18px;
-}
-
-.links .linklist {
-  display: flex;
-  flex-direction: column;
-}
-
-.links .linklist a {
+.directory-links a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 11px 0;
-  border-top: 1px solid rgba(160, 195, 235, 0.13);
+  width: 100%;
+  max-width: 210px;
   text-decoration: none;
-  color: rgba(215, 230, 250, .78);
-  font-size: 12px;
-  letter-spacing: .3px;
-  transition: color .25s ease,
-              padding .25s ease;
+  color: #263d5b;
+  font-size: 11px;
+  letter-spacing: .5px;
+  transition: color .25s ease, transform .25s ease;
 }
 
-.links .linklist a:hover {
-  color: #fff;
-  padding-left: 5px;
+.directory-links a span:last-child {
+  opacity: 0;
+  color: #557fb7;
+  transition: opacity .25s ease;
 }
 
-.links .linklist a span:last-child {
-  color: rgba(165, 200, 245, .55);
-  transition: transform .25s ease;
+.directory-links a:hover {
+  color: #729bd1;
+  transform: translateX(4px);
 }
 
-.links .linklist a:hover span:last-child {
-  transform: translate(3px, -3px);
-  color: #c4dcff;
+.directory-links a:hover span:last-child {
+  opacity: 1;
+}
+
+.links-footer {
+  padding-top: 18px;
+  border-top: 1px solid rgba(80,120,180,.2);
+  font-size: 8px;
 }
 
 
-/* Floating stars and symbols */
-.links-decor {
+/* RIGHT IMAGE PANEL */
+
+.links-visual {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid rgba(80,120,180,.25);
+}
+
+.visual-image {
+  flex: 1;
+  min-height: 470px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse at 42% 40%,
+      rgba(255,255,255,.95) 0%,
+      rgba(195,218,245,.75) 15%,
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 70% 55%,
+      rgba(83,126,187,.5),
+      transparent 60%
+    ),
+    linear-gradient(
+      125deg,
+      #dce9f8,
+      #f8fbff 45%,
+      #a9c3e4
+    );
+}
+
+/* Abstract central object */
+
+.visual-orb {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  top: 28%;
+  left: 35%;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 40% 38%,
+      #ffffff 0%,
+      #e9f4ff 8%,
+      #7197c5 24%,
+      #274d7c 38%,
+      #b6d0ed 48%,
+      transparent 68%
+    );
+  filter: blur(3px);
+  opacity: .8;
+  box-shadow: 0 0 60px rgba(75,120,180,.3);
+  animation: orbFloat 8s ease-in-out infinite;
+}
+
+@keyframes orbFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-12px) scale(1.04);
+  }
+}
+
+/* Grain texture */
+
+.visual-grain {
   position: absolute;
   inset: 0;
-  overflow: hidden;
+  opacity: .15;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(50,90,150,.12) 4px
+    );
   pointer-events: none;
-  z-index: 0;
 }
 
-.links .deco {
+.visual-code {
   position: absolute;
-  display: block;
-  color: rgba(180, 210, 255, .38);
-  font-size: 17px;
-  animation: linkFloat 7s ease-in-out infinite,
-             linkTwinkle 3s ease-in-out infinite;
+  top: 12%;
+  left: 8%;
+  font-family: monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: rgba(35,75,125,.65);
 }
 
-.links .d1 { top: 13%; left: 12%; font-size: 22px; }
-.links .d2 { top: 24%; left: 84%; animation-delay: -2s; }
-.links .d3 { top: 67%; left: 9%; font-size: 21px; animation-delay: -3s; }
-.links .d4 { top: 79%; left: 88%; font-size: 23px; animation-delay: -1s; }
-.links .d5 { top: 42%; left: 94%; animation-delay: -4s; }
-.links .d6 { top: 88%; left: 38%; font-size: 19px; animation-delay: -2.5s; }
-.links .d7 { top: 17%; left: 57%; animation-delay: -1.5s; }
-.links .d8 { top: 83%; left: 72%; animation-delay: -3.5s; }
-.links .d9 { top: 53%; left: 17%; font-size: 20px; animation-delay: -2s; }
-.links .d10 { top: 35%; left: 74%; font-size: 25px; animation-delay: -1s; }
-
-@keyframes linkFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-13px) rotate(12deg); }
+.visual-side-label {
+  position: absolute;
+  right: 7%;
+  bottom: 13%;
+  writing-mode: vertical-rl;
+  font-family: monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: rgba(35,75,125,.7);
 }
 
-@keyframes linkTwinkle {
-  0%, 100% { opacity: .25; }
-  50% { opacity: .8; }
+.visual-cross {
+  position: absolute;
+  top: 52%;
+  right: 17%;
+  color: rgba(50,90,150,.5);
+  font-size: 19px;
+}
+
+.visual-caption {
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 17px;
+  font-family: monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: rgba(65,100,145,.65);
+  border-top: 1px solid rgba(80,120,180,.2);
 }
 
 
-/* Mobile layout */
-@media (max-width: 650px) {
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+
   .links {
-    padding: 70px 6% 80px;
+    padding: 45px 6%;
+    min-height: auto;
   }
 
-  .links .linkgroups {
+  .links-layout {
     grid-template-columns: 1fr;
-    gap: 15px;
-    margin-top: 35px;
   }
 
-  .links .linkgroup {
-    padding: 19px 20px;
+  .links-directory {
+    min-height: 440px;
+    padding: 27px 24px;
   }
+
+}
+
+/* ============================================================
+   PAGE 04 — FORCE TRANSPARENT LEFT PANEL
+   ============================================================ */
+
+/* Remove ALL grey backgrounds from the left side */
+.links .links-layout,
+.links .links-directory,
+.links .directory-group,
+.links .directory-content {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Remove possible decorative overlays */
+.links .links-directory::before,
+.links .links-directory::after {
+  display: none !important;
+  background: transparent !important;
+}
+
+/* Make all directory text clearly white */
+.links .links-top,
+.links .links-footer,
+.links .directory-title,
+.links .group-index,
+.links .directory-links a,
+.links .directory-links a span,
+.links .visual-caption,
+.links .visual-code,
+.links .visual-side-label,
+.links .visual-cross {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Link hover */
+.links .directory-links a:hover {
+  color: #b8d9ff !important;
+}
+
+/* Small icons */
+.links .directory-icon {
+  background: rgba(255,255,255,0.08) !important;
+  border: 1px solid rgba(255,255,255,0.55) !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+/* Keep subtle structural borders */
+.links .links-layout {
+  border-color: rgba(255,255,255,0.22) !important;
+}
+
+.links .links-visual {
+  background: transparent !important;
+  border-left-color: rgba(255,255,255,0.22) !important;
+}
+
+.links .links-footer,
+.links .visual-caption {
+  border-color: rgba(255,255,255,0.2) !important;
+}
+
+/* Keep the floating orb unchanged */
+.links .visual-orb {
+  opacity: .8;
+}
+
+/*mata bergereak
+/* ============================================================
+   THE WATCHER — SUBTLE CURSOR MOVEMENT
+   ============================================================ */
+
+.visual-orb {
+  transition: translate 0.2s ease-out;
+  will-change: translate;
 }
 
 </style>
@@ -1047,104 +1233,126 @@
 <!-- ======================== PAGE 03 — PROJECTS — END ======================== -->
 
 
-
-
 <!-- ============================================================
      PAGE 04 — LINKS
      ============================================================ -->
+
 <section class="links" id="mia-links">
 
-  <!-- Floating background decorations -->
-  <div class="links-decor" aria-hidden="true">
-    <span class="deco d1">✧</span>
-    <span class="deco d2">×</span>
-    <span class="deco d3">○</span>
-    <span class="deco d4">✦</span>
-    <span class="deco d5">+</span>
-    <span class="deco d6">✧</span>
-    <span class="deco d7">o</span>
-    <span class="deco d8">×</span>
-    <span class="deco d9">✦</span>
-    <span class="deco d10">·</span>
-  </div>
+  <div class="links-layout">
 
-  <div class="head">
-    <div>
-      <div class="idx">// 100</div>
-      <h2>Links</h2>
-    </div>
+    <!-- LEFT: LINK DIRECTORY -->
+    <div class="links-directory">
 
-    <div class="rule"></div>
+      <div class="links-top">
+        <span>// 100 — CONNECTIONS</span>
+        <span>2026</span>
+      </div>
 
-    <p class="desc">Find me elsewhere.</p>
-  </div>
-
-
-  <div class="linkgrid">
-
-    <div class="linkgroups">
 
       <!-- PERSONAL -->
-      <div class="linkgroup">
+      <div class="directory-group">
 
-        <div class="linkgroup-head">
-          <span class="group-index">01 / PERSONAL</span>
-          <h3>Get to Know Me</h3>
+        <div class="directory-icon">
+          <span>◉</span>
         </div>
 
-        <p class="linkgroup-desc">
-          A little glimpse into my world.
-        </p>
+        <div class="directory-content">
 
-        <div class="linklist">
+          <div class="directory-title">
+            PERSONALLY...
+          </div>
 
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            <span>Steam</span><span>↗</span>
-          </a>
+          <div class="directory-links">
 
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            <span>Spotify</span><span>↗</span>
-          </a>
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <span>+ spotify</span>
+              <span>↗</span>
+            </a>
 
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            <span>Pinterest</span><span>↗</span>
-          </a>
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <span>+ steam</span>
+              <span>↗</span>
+            </a>
+
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <span>+ pinterest</span>
+              <span>↗</span>
+            </a>
+
+          </div>
 
         </div>
+
       </div>
 
 
       <!-- PROFESSIONAL -->
-      <div class="linkgroup">
+      <div class="directory-group">
 
-        <div class="linkgroup-head">
-          <span class="group-index">02 / CONTACT</span>
-          <h3>Find Me</h3>
+        <div class="directory-icon">
+          <span>⌘</span>
         </div>
 
-        <p class="linkgroup-desc">
-          Somewhere on the internet.
-        </p>
+        <div class="directory-content">
 
-        <div class="linklist">
+          <div class="directory-title">
+            REACH ME AT...
+          </div>
 
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            <span>Portfolio / PDF</span><span>↗</span>
-          </a>
+          <div class="directory-links">
 
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            <span>LinkedIn</span><span>↗</span>
-          </a>
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <span>+ portfolio / pdf</span>
+              <span>↗</span>
+            </a>
 
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            <span>Itch.io</span><span>↗</span>
-          </a>
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <span>+ linkedin</span>
+              <span>↗</span>
+            </a>
 
-          <a href="mailto:YOUR-EMAIL-HERE">
-            <span>Email</span><span>↗</span>
-          </a>
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <span>+ itch.io</span>
+              <span>↗</span>
+            </a>
+
+            <a href="mailto:YOUR-EMAIL-HERE">
+              <span>+ email</span>
+              <span>↗</span>
+            </a>
+
+          </div>
 
         </div>
+
+      </div>
+
+
+      <div class="links-footer">
+        <span>MIA / END OF DIRECTORY</span>
+        <span>↗ 01.04</span>
+      </div>
+
+    </div>
+
+
+    <!-- RIGHT: ABSTRACT IMAGE -->
+    <div class="links-visual">
+
+      <div class="visual-image">
+        <!-- Replace this with your own image later -->
+        <div class="visual-orb"></div>
+        <div class="visual-grain"></div>
+
+        <span class="visual-code">MIA_001</span>
+        <span class="visual-side-label">A STUDY OF ELSEWHERE</span>
+        <span class="visual-cross">＋</span>
+      </div>
+
+      <div class="visual-caption">
+        <span>FIG. 04 — PERSONAL ARCHIVE</span>
+        <span>UNKNOWN / 2026</span>
       </div>
 
     </div>
@@ -1152,6 +1360,7 @@
   </div>
 
 </section>
+
 <!-- ========================== PAGE 04 — LINKS — END ========================== -->
 </main>
 
@@ -1534,6 +1743,37 @@
     setTimeout(repeatSymbol,650);
 
   });
+    /* ==========================================================
+     THE WATCHER — GLOBAL CURSOR TRACKING
+     ========================================================== */
+
+  const watcherOrb = root.querySelector('.visual-orb');
+  const watcherImage = root.querySelector('.visual-image');
+
+  if (watcherOrb && watcherImage) {
+
+    document.addEventListener('mousemove', (event) => {
+
+      const rect = watcherImage.getBoundingClientRect();
+
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      const x = (event.clientX - centerX) / (window.innerWidth / 2);
+      const y = (event.clientY - centerY) / (window.innerHeight / 2);
+
+      const moveX = Math.max(-22, Math.min(22, x * 22));
+      const moveY = Math.max(-16, Math.min(16, y * 16));
+
+      watcherOrb.style.translate = `${moveX}px ${moveY}px`;
+
+    });
+
+    document.addEventListener('mouseleave', () => {
+      watcherOrb.style.translate = '0px 0px';
+    });
+
+  }
 
 })();
 </script>
